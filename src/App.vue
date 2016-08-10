@@ -28,7 +28,6 @@ export default {
       this.$broadcast('newtodo-forchild',item);
     },
     'totalTodos': function(todos){
-      this.totalTodos = todos.length;
       this.$broadcast('todosObj-forchild',todos);
     },
     'remaining': function(remainCount){
