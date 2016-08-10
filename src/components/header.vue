@@ -13,7 +13,7 @@
       }
     },
     methods: {
-      addtodo: function(){
+      addtodo(){
         if(this.todo.trim()){
           this.$dispatch('newtodo',this.todo);
           this.todo = '';

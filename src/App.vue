@@ -1,5 +1,5 @@
 <template>
-  <section class="todoapp">
+  <section class="todoapp" v-cloak>
     <todo-header></todo-header>
     <todo-list></todo-list>
     <input type="hidden" v-model="remaincount">
