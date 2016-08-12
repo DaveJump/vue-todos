@@ -2,7 +2,7 @@
 	<section class="main">
 		<input type="checkbox" class="toggle-all" v-show="todos.length" v-model="allDone" @change="toggleDispatch()" />
 		<ul class="todo-list">
-			<li class="todo" :class="{completed: todo.completed,editing: todo == editedTodo}" v-for="todo in todos">
+			<li class="todo" :class="{completed: todo.completed,editing: todo == editedTodo}" v-for="todo in filteredTodos">
 				<div class="view">
 					<input type="checkbox" class="toggle" v-model="todo.completed" @change="toggleDispatch()">
 					<label @dblclick="editTodo(todo)">{{todo.todoText}}</label>
@@ -23,7 +23,8 @@
 		data(){
 			return {
 				todos: Store.fetch(),
-				editedTodo: null
+				editedTodo: null,
+				visibility: 'all'
 			}
 		},
 		watch: {
@@ -42,6 +43,9 @@
 			},
 			'todosObj-forchild': function(todos){
 				this.todos = todos;
+			},
+			'check-filter': function(visibility){
+				this.visibility = visibility;
 			}
 		},
 		methods: {
@@ -75,6 +79,9 @@
 			}
 		},
 		computed: {
+			filteredTodos: function(){
+				return Filter[this.visibility](this.todos);
+			},
 			remaining: function(){
 				if(this.todos.length){
 					var remain = Filter.active(this.todos).length;
@@ -106,6 +113,6 @@
 </script>
 
 <style lang="scss">
-@import '../modules/variable';
-@import '../modules/list';
+@import '../modules/scss/variable';
+@import '../modules/scss/list';
 </style>

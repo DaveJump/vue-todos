@@ -1,11 +1,14 @@
 export default {
-	active: function(arr){
-		return arr.filter(function(item){
+	all: function(todos){
+		return todos;
+	},
+	active: function(todos){
+		return todos.filter(function(item){
 			return !item.completed;
 		});
 	},
-	completed: function(arr){
-		return arr.filter(function(item){
+	completed: function(todos){
+		return todos.filter(function(item){
 			return item.completed;
 		});
 	}

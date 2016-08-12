@@ -24,6 +24,6 @@
 </script>
 
 <style lang="scss">
-@import '../modules/variable';
-@import '../modules/header';
+@import '../modules/scss/variable';
+@import '../modules/scss/header';
 </style>

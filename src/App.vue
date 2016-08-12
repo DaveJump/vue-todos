@@ -15,7 +15,8 @@ import Footer from './components/footer';
 export default {
   data(){
     return {
-      remaining: 0
+      remaining: 0,
+      visibility: 'all'
     }
   },
   components: {
@@ -23,6 +24,14 @@ export default {
     'todo-list': List,
     'todo-footer': Footer
   },
+  // watch: {
+  //   visibility: {
+  //     deep: true,
+  //     handler: function(){
+  //       this.$broadcast('visibility-change',this.visibility);
+  //     }
+  //   }
+  // },
   events: {
     'newtodo': function(item){
       this.$broadcast('newtodo-forchild',item);
@@ -32,6 +41,9 @@ export default {
     },
     'remaining': function(remainCount){
       this.remaining = remainCount;
+    },
+    'visibility-change': function(visibility){
+      this.$broadcast('check-filter',visibility);
     }
   }
 }
