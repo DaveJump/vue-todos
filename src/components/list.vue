@@ -44,7 +44,7 @@
 			'todosObj-forchild': function(todos){
 				this.todos = todos;
 			},
-			'check-filter': function(visibility){
+			'visibility-change': function(visibility){
 				this.visibility = visibility;
 			}
 		},

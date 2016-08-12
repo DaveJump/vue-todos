@@ -24,14 +24,14 @@ export default {
     'todo-list': List,
     'todo-footer': Footer
   },
-  // watch: {
-  //   visibility: {
-  //     deep: true,
-  //     handler: function(){
-  //       this.$broadcast('visibility-change',this.visibility);
-  //     }
-  //   }
-  // },
+  watch: {
+    visibility: {
+      deep: true,
+      handler: function(){
+        this.$broadcast('visibility-change',this.visibility);
+      }
+    }
+  },
   events: {
     'newtodo': function(item){
       this.$broadcast('newtodo-forchild',item);
@@ -41,9 +41,6 @@ export default {
     },
     'remaining': function(remainCount){
       this.remaining = remainCount;
-    },
-    'visibility-change': function(visibility){
-      this.$broadcast('check-filter',visibility);
     }
   }
 }

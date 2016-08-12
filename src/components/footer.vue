@@ -4,9 +4,9 @@
 			<strong v-text="remaincount"></strong> {{remaincount | pluralize 'item'}} left
 		</span>
 		<ul class="filters">
-			<li><a @click="check('all')" href="#/all" :class="{selected: visibility == 'all'}">All</a></li>
-			<li><a @click="check('active')" href="#/active" :class="{selected: visibility == 'active'}">Active</a></li>
-			<li><a @click="check('completed')" href="#/completed" :class="{selected: visibility == 'completed'}">Completed</a></li>
+			<li><a href="#/all" :class="{selected: visibility == 'all'}">All</a></li>
+			<li><a href="#/active" :class="{selected: visibility == 'active'}">Active</a></li>
+			<li><a href="#/completed" :class="{selected: visibility == 'completed'}">Completed</a></li>
 		</ul>
 		<button class="clear-completed" @click="removeCompleted()" v-show="todos.length > remaincount">Clear completed</button>
 	</footer>
@@ -36,11 +36,6 @@
 			removeCompleted: function(){
 				this.todos = Filter.active(this.todos);
 				this.$dispatch('totalTodos',this.todos);
-			},
-			check: function(status){
-				this.visibility = status;
-				this.$dispatch('visibility-change',this.visibility);
-				return false;
 			}
 		}
 	}
