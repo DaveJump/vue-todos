@@ -25,15 +25,15 @@
 		},
 		props: ['remaincount'],
 		events: {
-			'todosObj-forchild': function(todos){
+			todosObjForchild(todos){
 				this.todos = todos;
 			},
-			'visibility-change': function(visibility){
+			visibilityChange(visibility){
 				this.visibility = visibility;
 			}
 		},
 		methods: {
-			removeCompleted: function(){
+			removeCompleted(){
 				this.todos = Filter.active(this.todos);
 				this.$dispatch('totalTodos',this.todos);
 			}

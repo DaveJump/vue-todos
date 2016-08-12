@@ -27,19 +27,19 @@ export default {
   watch: {
     visibility: {
       deep: true,
-      handler: function(){
-        this.$broadcast('visibility-change',this.visibility);
+      handler(){
+        this.$broadcast('visibilityChange',this.visibility);
       }
     }
   },
   events: {
-    'newtodo': function(item){
-      this.$broadcast('newtodo-forchild',item);
+    newtodo(item){
+      this.$broadcast('newtodoForchild',item);
     },
-    'totalTodos': function(todos){
-      this.$broadcast('todosObj-forchild',todos);
+    totalTodos(todos){
+      this.$broadcast('todosObjForchild',todos);
     },
-    'remaining': function(remainCount){
+    remaining(remainCount){
       this.remaining = remainCount;
     }
   }

@@ -5,13 +5,13 @@ Vue.use(Router);
 
 let router = new Router();
 
-['all','active','completed'].forEach(function(visibility){
+['all','active','completed'].forEach((visibility) => {
 	router.on(visibility,{
 		component: {App}
 	});
 });
 
-router.afterEach(function(transition){
+router.afterEach((transition) => {
 	switch(transition.to.path.replace('/','')){
 		case 'all':
 			router.app.visibility = 'all';

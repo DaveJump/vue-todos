@@ -34,33 +34,33 @@
 			}
 		},
 		events: {
-			'newtodo-forchild': function(txt){
+			newtodoForchild(txt){
 				this.todos.push({
 					todoText: txt,
 					completed: false
 				});
 				this.$dispatch('totalTodos',this.todos);
 			},
-			'todosObj-forchild': function(todos){
+			todosObjForchild(todos){
 				this.todos = todos;
 			},
-			'visibility-change': function(visibility){
+			visibilityChange(visibility){
 				this.visibility = visibility;
 			}
 		},
 		methods: {
-			removeTodo: function(todo){
+			removeTodo(todo){
 				this.todos.$remove(todo);
 				this.$dispatch('totalTodos',this.todos);
 			},
-			toggleDispatch: function(){
+			toggleDispatch(){
 				this.$dispatch('totalTodos',this.todos);
 			},
-			editTodo: function(todo){
+			editTodo(todo){
 				this.beforeEditCache = todo.todoText;
 				this.editedTodo = todo;
 			},
-			doneEdit: function(todo){
+			doneEdit(todo){
 				if(!this.editedTodo){
 					return;
 				}
@@ -70,7 +70,7 @@
 					this.removeTodo(todo);
 				}
 			},
-			cancelTodo: function(todo){
+			cancelTodo(todo){
 				if(!this.editedTodo){
 					return;
 				}
@@ -79,10 +79,10 @@
 			}
 		},
 		computed: {
-			filteredTodos: function(){
+			filteredTodos(){
 				return Filter[this.visibility](this.todos);
 			},
-			remaining: function(){
+			remaining(){
 				if(this.todos.length){
 					var remain = Filter.active(this.todos).length;
 					this.$dispatch('remaining',remain);
@@ -90,11 +90,11 @@
 				}
 			},
 			allDone: {
-				get: function(){
+				get(){
 					return this.remaining === 0;
 				},
-				set: function(value){
-					this.todos.forEach(function(item){
+				set(value){
+					this.todos.forEach((item) => {
 						item.completed = value;
 					});
 				}
@@ -105,7 +105,7 @@
 				if(!value){
 					return;
 				}
-				var el = this.el;
+				let el = this.el;
 				el.focus();
 			}
 		}
