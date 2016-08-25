@@ -1,10 +1,10 @@
 <template>
 	<section class="main">
-		<input type="checkbox" class="toggle-all" v-show="todos.length" v-model="allDone" @change="toggleDispatch()" />
+		<input type="checkbox" class="toggle-all" v-show="todos.length" v-model="allDone" />
 		<ul class="todo-list">
 			<li class="todo" :class="{completed: todo.completed,editing: todo == editedTodo}" v-for="todo in filteredTodos">
 				<div class="view">
-					<input type="checkbox" class="toggle" v-model="todo.completed" @change="toggleDispatch()">
+					<input type="checkbox" class="toggle" v-model="todo.completed">
 					<label @dblclick="editTodo(todo)">{{todo.todoText}}</label>
 					<button class="edit-btn" @click="editTodo(todo)"></button>
 					<button class="destroy" @click="removeTodo(todo)"></button>
@@ -30,7 +30,10 @@
 		watch: {
 			todos: {
 				deep: true,
-				handler: Store.save
+				handler(){
+					Store.save(this.todos);
+					this.$dispatch('totalTodos',this.todos);
+				}
 			}
 		},
 		events: {
@@ -51,9 +54,6 @@
 		methods: {
 			removeTodo(todo){
 				this.todos.$remove(todo);
-				this.$dispatch('totalTodos',this.todos);
-			},
-			toggleDispatch(){
 				this.$dispatch('totalTodos',this.todos);
 			},
 			editTodo(todo){
@@ -94,7 +94,7 @@
 					return this.remaining === 0;
 				},
 				set(value){
-					this.todos.forEach((item) => {
+					this.todos.forEach(item => {
 						item.completed = value;
 					});
 				}

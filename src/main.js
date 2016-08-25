@@ -1,17 +1,15 @@
-import Vue from 'vue';
+import {Router} from './baseModules';
 import App from './App';
-import Router from 'vue-router';
-Vue.use(Router);
 
 let router = new Router();
 
-['all','active','completed'].forEach((visibility) => {
+['all','active','completed'].forEach(visibility => {
 	router.on(visibility,{
 		component: {App}
 	});
 });
 
-router.afterEach((transition) => {
+router.afterEach(transition => {
 	switch(transition.to.path.replace('/','')){
 		case 'all':
 			router.app.visibility = 'all';

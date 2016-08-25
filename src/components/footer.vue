@@ -15,12 +15,14 @@
 <script>
 	import Filter from '../modules/filter';
 	import Store from '../modules/store';
+	import {VStore} from '../baseModules';
 
 	export default {
 		data(){
 			return {
 				todos: Store.fetch(),
-				visibility: 'all'
+				visibility: 'all',
+				count: VStore.state.count
 			}
 		},
 		props: ['remaincount'],
