@@ -1,8 +1,7 @@
 <template>
   <header class="header">
     <h1>todos</h1>
-    <input class="new-todo" autofocus autocomplete="off" placeholder="What needs to be done?" v-model="todo" @keyup.enter="addtodo()">
-    <table @contextMenu="test()"></table>
+    <input class="new-todo" autofocus autocomplete="off" placeholder="What needs to be done?" v-model="todo" @keyup.enter="addtodo">
   </header>
 </template>
 
@@ -15,10 +14,8 @@
     },
     methods: {
       addtodo(){
-        if(this.todo.trim()){
-          this.$dispatch('newtodo',this.todo);
-          this.todo = '';
-        }
+        this.$dispatch('newtodo',this.todo);
+        this.todo = '';
       }
     }
   }

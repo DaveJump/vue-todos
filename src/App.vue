@@ -1,16 +1,15 @@
 <template>
   <section class="todoapp" v-cloak>
-    <todo-header></todo-header>
-    <todo-list></todo-list>
-    <input type="hidden" v-model="remaincount">
-    <todo-footer :remaincount="remaining"></todo-footer>
+    <Todoheader></Todoheader>
+    <Todolist></Todolist>
+    <Todofooter :remaincount="remaining"></Todofooter>
   </section>
 </template>
 
 <script>
-import Header from './components/header';
-import List from './components/list';
-import Footer from './components/footer';
+import Todoheader from './components/header';
+import Todolist from './components/list';
+import Todofooter from './components/footer';
 
 export default {
   data(){
@@ -19,11 +18,7 @@ export default {
       visibility: 'all'
     }
   },
-  components: {
-    'todo-header': Header,
-    'todo-list': List,
-    'todo-footer': Footer
-  },
+  components: {Todoheader,Todolist,Todofooter},
   watch: {
     visibility: {
       deep: true,

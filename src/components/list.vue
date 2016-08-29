@@ -9,7 +9,7 @@
 					<button class="edit-btn" @click="editTodo(todo)"></button>
 					<button class="destroy" @click="removeTodo(todo)"></button>
 				</div>
-				<input class="edit" v-todo-focus="todo == editedTodo" v-model="todo.todoText" @keyup.enter="doneEdit(todo)" @blur="doneEdit(todo)" @keyup.esc="cancelTodo(todo)">
+				<input class="edit" v-todofocus="todo == editedTodo" v-model="todo.todoText" @keyup.enter="doneEdit(todo)" @blur="doneEdit(todo)" @keyup.esc="cancelTodo(todo)">
 			</li>
 		</ul>
 	</section>
@@ -101,7 +101,7 @@
 			}
 		},
 		directives: {
-			'todo-focus': function(value){
+			todofocus(value){
 				if(!value){
 					return;
 				}

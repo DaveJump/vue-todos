@@ -1,6 +1,10 @@
-import {Router} from './baseModules';
+import Vue from 'vue';
+import Router from 'vue-router';
 import App from './App';
 
+Vue.use(Router);
+
+//router processing
 let router = new Router();
 
 ['all','active','completed'].forEach(visibility => {
@@ -23,4 +27,5 @@ router.afterEach(transition => {
 	}
 });
 
+//start router
 router.start(App,'#todosapp');
