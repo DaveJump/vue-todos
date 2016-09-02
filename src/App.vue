@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import Todoheader from './components/header';
-import Todolist from './components/list';
-import Todofooter from './components/footer';
+import Todoheader from 'components/header';
+import Todolist from 'components/list';
+import Todofooter from 'components/footer';
 
 export default {
   data(){
